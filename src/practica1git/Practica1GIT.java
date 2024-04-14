@@ -18,19 +18,19 @@ public class Practica1GIT {
      */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        double res = 0;
+        double resultado = 0;
+        double num1;
+        double num2;
         String operacion;
         boolean comprobar = false;
 
         do {
 
-            String numero1;
-            do {
-                System.out.println("\n Introdueix el primer numero. ");
-                numero1 = sc.nextLine();
-            } while (!numero1.matches("[+-]?[\\d]*[.]?[\\d]+"));
-            double nume1 = Double.parseDouble(numero1);
-            double n1 = new Double(numero1);
+            System.out.println("\n Introdueix el primer numero. ");
+            num1 = sc.nextDouble();
+
+            System.out.println("\n Introdueix el primer numero. ");
+            num2 = sc.nextDouble();
 
             do {
                 System.out.println("\n Operació? (Indica el signe)");
@@ -47,61 +47,47 @@ public class Practica1GIT {
                 }
             } while (comprobar != true);
 
-            String numero2;
-            do {
-                System.out.println("\n Introdueix el segon numero.");
-                numero2 = sc.nextLine();
-            } while (!numero2.matches("[+-]?[\\d]*[.]?[\\d]+"));
-            double nume2 = Double.parseDouble(numero2);
-            double n2 = new Double(numero2);
-
             do {
                 comprobar = true;
                 switch (operacion) {
                     case "+":
-                        res = n2 + n2;
+                        resultado = num2 + num2;
                         break;
                     case "-":
-                        res = n1 - n2;
+                        resultado = num1 - num2;
                         break;
                     case "x":
                     case "X":
-                        res = n1 * n2;
+                        resultado = num1 * num2;
                         break;
                     case "/":
-                        while (n2 == 0) {
-                            do {
-                                System.err.println(" Al denominador hi ha un zero \n"
-                                        + "per a  evitar errors coloca un altre valor.");
-                                numero2 = sc.nextLine();
-                            } while (!numero2.matches("[+-]?[\\d]*[.]?[\\d]+"));
-                            nume2 = Double.parseDouble(numero2);
-                            n2 = new Double(numero2);
+                        if (num2 == 0) {
+                            System.err.println(" Al denominador hi ha un zero \n"
+                                    + "per a  evitar errors coloca un altre valor.");
+                        } else {
+                            resultado = num1 / num2;
                         }
-                        res = n1 / n2;
                         break;
                     case "*":
-                        res = Math.pow(n1, n1);
+                        resultado = Math.pow(num1, num1);
                         break;
                     case "%":
-                        while (n2 == 0) {
-                            do {
-                                System.err.println(" Al denominador hi ha un zero \n"
-                                        + "per a  evitar errors coloca un altre valor.");
-                                numero2 = sc.nextLine();
-                            } while (!numero2.matches("[+-]?[\\d]*[.]?[\\d]+"));
-                            nume2 = Double.parseDouble(numero2);
-                            n2 = new Double(numero2);
+                        if (num2 == 0) {
+                            System.err.println(" Al denominador hi ha un zero \n"
+                                    + "per a  evitar errors coloca un altre valor.");
+                        } else {
+                            resultado = num1 % num2;
                         }
-                        res = n1 % n2;
                         break;
                 }
+
             } while (comprobar != true);
 
-            System.out.println("\nResultado: " + n1 + " " + operacion + " " + n2 + " = " + res);
-            
+            System.out.println("\nResultado: " + num1 + " " + operacion + " " + num2 + " = " + resultado);
+
             System.out.println("\n¿Quieres continuar operando? (s/n):");
-            
-        } while (sc.nextLine().equalsIgnoreCase("s"));
+
+        } while (sc.nextLine()
+                .equalsIgnoreCase("s"));
     }
 }
