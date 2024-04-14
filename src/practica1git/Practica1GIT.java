@@ -98,24 +98,10 @@ public class Practica1GIT {
                 }
             } while (comprobar != true);
 
-            System.out.println("(" + numero1 + ") " + operacion + " (" + numero2 + ")" + " = " + res);
-            System.out.println("\n Vols continuar operant? \n");
-            System.out.println(" [s/n]");
-            do {
-                comprobar = true;
-                operacion = sc.nextLine();
-
-                switch (operacion) {
-                    case "s":
-                    case "S":
-                    case "n":
-                    case "N":
-                        break;
-                    default:
-                        System.err.println("\n Error, posa un valor vàlid. \n");
-                        comprobar = false;
-                }
-            } while (comprobar != true);
-        } while (operacion.equals("s") || operacion.equals("S"));
+            System.out.println("\nResultado: " + n1 + " " + operacion + " " + n2 + " = " + res);
+            
+            System.out.println("\n¿Quieres continuar operando? (s/n):");
+            
+        } while (sc.nextLine().equalsIgnoreCase("s"));
     }
 }
